@@ -41,4 +41,3 @@ def binary_search2(arr,target):
     return -1
 
 print(binary_search2(arr1,target1))
-            
