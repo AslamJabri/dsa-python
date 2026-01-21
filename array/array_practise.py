@@ -47,10 +47,17 @@ def non_decreasing(arr):
 print(non_decreasing(non_decreasing_order))
 
 # #Reverse the array in-place.
-# sorted_array = [1,2,3,4]
+sorted_array = [1,2,3,4]
 
-# def reverse_array(arr):
-#     length = len(arr)-1
-#     for x in range(len(arr)):
-#         arr
-# reverse_array(sorted_array)
+def reverse_array(arr):
+    left = 0
+    right = len(arr)-1
+    
+    while left < right:
+        arr[left],arr[right] = arr[right],arr[left]
+        left +=1
+        right -=1
+    return arr
+   
+        
+print(reverse_array(sorted_array))
