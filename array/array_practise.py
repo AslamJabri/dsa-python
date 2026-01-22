@@ -1,63 +1,120 @@
 #Find the second largest element in an array.
-arr = [10, 5, 20, 8]
 
-def second_largest(arr):
+arr = [10,5,20,8]
+
+def second_largest_element(arr):
     largest = float('-inf')
     second = float('-inf')
- 
-    for x in arr:
-        if x > largest:
+    for num in arr:
+        if num > largest:
             second = largest
-            largest = x
-        elif x < largest and x > second:
-                second = x
-                
-    return second
+            largest = num
+        elif num < largest and num > second:
+            second = num
             
-          
-          
-        
-print(second_largest(arr))
+    return second
 
+print(second_largest_element(arr))
 
 #Count how many elements are greater than a given value k.
 
-arr_count = [3, 7, 1, 9, 4]
+count_elements = [3, 7, 1, 9, 4]
 k = 4
 
-def count_greater_number(arr,k):
+def greater_elements(arr,k):
     count = 0
-    for x in arr:
-        if k > x:
+    for num in arr:
+        if num > k:
             count+=1
+        
     return count
-print(count_greater_number(arr_count,k))
+print(greater_elements(count_elements,k))
 
-#Check if an array is sorted in non-decreasing order.
-non_decreasing_order = [1,2,2,5,7]
 
-def non_decreasing(arr):
-    
-    for x in range(len(arr)-1):
-        if arr[x+1] < arr[x]:
+# Check if an array is sorted in non-decreasing order.
+
+checking_sorted_array = [1, 2, 2, 5, 7]
+
+def sorted_arr(arr):
+    for num in range (len(arr)-1):
+        if arr[num] > arr[num+1]:
             return False
+        
     return True
-        
-        
-print(non_decreasing(non_decreasing_order))
 
-# #Reverse the array in-place.
-sorted_array = [1,2,3,4]
+print(sorted_arr(checking_sorted_array))
 
-def reverse_array(arr):
+#Reverse the array in-place.
+
+reversing_arr=[1,2,3,4]
+
+def rev_arr(arr):
     left = 0
-    right = len(arr)-1
+    right = len(arr) - 1
     
     while left < right:
         arr[left],arr[right] = arr[right],arr[left]
         left +=1
         right -=1
     return arr
-   
+
+print(rev_arr(reversing_arr))
+
+
+#Palindrome Check
+
+string = "hello"
+
+def is_palindrome(s):
+    left = 0
+    right = len(s) -1
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left+=1
+        right -=1
+    return True
         
-print(reverse_array(sorted_array))
+print(is_palindrome(string))
+
+#Problem 2 — Pair Sum in Sorted Array (Easy)
+
+sum_arr = [1,2,4,6,10]
+target = 8
+
+def pain_sum(arr,target):
+    left = 0
+    right = len(arr)-1
+    
+    while left < right:
+        number = arr[left] + arr[right]
+        if number > target:
+            right -=1
+        elif number < target:
+            left +=1
+        elif number == target:
+             return True,arr[left],arr[right]
+    return False
+            
+print(pain_sum(sum_arr,target))
+
+
+duplicated_arr = [1,1,2,2,3]
+
+def remove_duplicates(arr):
+    left = 0
+    for i in range(1,len(arr)):
+        if arr[i] != arr[left]:
+            left+=1
+            arr[left] = arr[i]
+
+    return arr[:left+1]
+    
+    
+
+print(remove_duplicates(duplicated_arr))
+
+
+
+
+                 
