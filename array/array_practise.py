@@ -117,4 +117,66 @@ print(remove_duplicates(duplicated_arr))
 
 
 
-                 
+# sliding window
+
+sliding_window_arr = [1,2,3,1,2,4,6]
+k = 3
+
+def sliding_window(arr,k):
+    max_sum = 0
+    left = 0
+    window_sum = 0
+    for right in range(len(arr)):
+        window_sum += arr[right]
+        if right >= k-1:
+            if window_sum > max_sum:
+                max_sum=window_sum
+            window_sum -= arr[left]
+            left +=1
+    return max_sum
+    
+print(sliding_window(sliding_window_arr,k))
+
+# Problem: Average of Subarrays of Size K
+
+arr_sliding = [1, 3, 2, 6, -1, 4, 1, 8, 2]
+k = 5
+
+
+def sliding_practise(arr,k):
+    result = []
+    window_sum = 0
+    left = 0
+    for right in range(len(arr)):
+        window_sum += arr[right]
+        
+        if right >= k-1:
+            result.append(window_sum/k)
+            window_sum -= arr[left]
+            
+            left += 1
+    return result
+
+print(sliding_practise(arr_sliding,k))
+        
+    
+# Problem: Maximum Sum Subarray of Size K
+
+s_arr = [2, 3, 4, 1, 5]
+s_k = 2
+def max_sum(arr,k):
+    max_sum = 0
+    left = 0
+    window_sum = 0
+    
+    for right in range(len(arr)):
+        window_sum += arr[right]
+        
+        if right >= k-1:
+            if window_sum > max_sum:
+                max_sum = window_sum
+            window_sum -= arr[left]
+            left +=1
+    return max_sum
+
+print(max_sum(s_arr,s_k))
