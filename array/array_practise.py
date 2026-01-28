@@ -180,3 +180,85 @@ def max_sum(arr,k):
     return max_sum
 
 print(max_sum(s_arr,s_k))
+
+
+def sliding_window_variable(arr,target):
+    left = 0
+    min_length = float('inf')
+    current_sum = 0
+    for right in range(len(arr)):
+        current_sum += arr[right]
+        
+        while current_sum >= target:
+            current_window_size = right - left + 1
+            
+            if current_window_size < min_length:
+                min_length = current_window_size
+            
+            current_sum -= arr[left]
+            left +=1
+        
+    return min_length if min_length != float('inf') else 0
+    
+    
+    
+s_arr = [2, 1, 5, 2, 3, 2]
+s_target = 7
+print(sliding_window_variable(s_arr,s_target))
+
+
+# Practice Problem — Variable Sliding Window
+
+# Longest subarray with sum ≤ S
+
+l_arr = [1, 2, 1, 0, 1, 1, 0]
+l_target = 4
+
+def longest_subarray(arr,target):
+    left = 0
+    current_sum = 0
+    result = 0
+    for right in range(len(arr)):
+        current_sum += arr[right]
+        
+        while current_sum > target:
+            current_sum -= arr[left]
+            left +=1
+            
+        current_window_length = right-left +1
+        
+        result = max(result,current_window_length)
+    return result
+    
+    
+    
+    
+print(longest_subarray(l_arr,l_target))
+    
+    
+
+# 🧩 Problem: Longest Substring Without Repeating Characters
+
+s = "abcabcbb"
+
+def substring(s):
+    char_set = set()
+    left = 0
+    max_len = 0
+    
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left +=1
+            
+        char_set.add(s[right])
+        
+        max_len = max(max_len,right-left +1)
+    return max_len
+    
+    
+    
+    
+    
+    
+print(f"substring : {substring(s)}")
